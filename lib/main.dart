@@ -3,7 +3,7 @@ import 'package:rangpur_weather/platform_related_stuffs/scroll_behavior.dart';
 import 'package:rangpur_weather/screens/home_page.dart';
 
 void main() {
-  runApp(StartApp());
+  runApp(const StartApp());
 }
 
 class StartApp extends StatefulWidget {

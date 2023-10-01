@@ -17,6 +17,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late Future weatherData;
+
+  @override
+  void initState() {
+    super.initState();
+    weatherData = getWeatherData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,15 +43,19 @@ class _HomePageState extends State<HomePage> {
         //   },
         //   icon: const Icon(Icons.wb_twilight_rounded),
         // ),
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {},
-        //     icon: const Icon(Icons.refresh_rounded),
-        //   ),
-        // ],
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                weatherData = getWeatherData();
+              });
+            },
+            icon: const Icon(Icons.refresh_rounded),
+          ),
+        ],
       ),
       body: FutureBuilder(
-        future: getWeatherData(),
+        future: weatherData,
         builder: (context, snapshot) {
           return snapshot.hasData
               ? Padding(
